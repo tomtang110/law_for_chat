@@ -10,15 +10,26 @@ class JsonPreprocessor:
         self.save_path = save_path
 
     @staticmethod
-    def instruct_format_example(example: dict) -> dict:
-        context = f"Instruction: {example['instruction']}\n"
-        if example.get("input"):
-            context += f"Input: {example['input']}\n"
-        context += "Answer: "
-        target = example["output"]
-        return {"context": context, "target": target}
+    def instruct_format_example(example,is_list) -> list:
+        if is_list:
+            features = []
+            for ex in example:
+                context = f"Instruction: {ex['instruction']}\n"
+                if ex.get("input"):
+                    context += f"Input: {ex['input']}\n"
+                context += "Answer: "
+                target = ex["output"]
+                features.append({"context": context, "target": target})
 
-    def process(self):
+        else:
+            context = f"Instruction: {example['instruction']}\n"
+            if example.get("input"):
+                context += f"Input: {example['input']}\n"
+            context += "Answer: "
+            target = example["output"]
+        return [{"context": context, "target": target}]
+
+    def process(self,is_list=False):
         with open(self.data_path,encoding='utf-8') as f:
             examples = f.read()
 
@@ -26,8 +37,8 @@ class JsonPreprocessor:
 
         features = []
         for example in tqdm(parsed_json,desc='Processing'):
-            feature = self.instruct_format_example(example)
-            features.append(feature)
+            feature = self.instruct_format_example(example,is_list)
+            features.extend(feature)
 
         with open(self.save_path,'w',encoding='utf-8') as p:
             p.write(json.dumps(features,ensure_ascii=False))
@@ -35,5 +46,8 @@ class JsonPreprocessor:
 
 
 if __name__ == "__main__":
-    preprocessor = JsonPreprocessor(data_path='../instruction_test_data/zh-data01.json',save_path='../instruction_test_data/zh-data01_completed.json')
-    preprocessor.process()
+    data_path = '../law_data/legal_advice.json'
+    save_path = '../instruction_test_data/legal_advic_completed.json'
+    preprocessor = JsonPreprocessor(data_path=data_path,
+                                    save_path=save_path)
+    preprocessor.process(True)
