@@ -249,6 +249,3 @@ bash train_chat.sh
   year={2022}
 }
 ```
-
-
-

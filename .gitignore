@@ -1,0 +1,11 @@
+*.pyc
+__pycache__
+logs
+.mypy_cache
+build
+tensorflow/
+serving/
+bazel-*
+*.whl
+.vscode
+.idea

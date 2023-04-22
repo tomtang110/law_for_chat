@@ -1,1 +1,2 @@
-# law_for_chat
+# init-repo-template
+init-repo-template
