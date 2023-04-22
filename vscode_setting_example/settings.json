@@ -1,0 +1,37 @@
+{
+  "editor.tabSize": 2,
+  "python.linting.enabled": true,
+  "python.linting.pylintEnabled": true,
+  "python.linting.pylintPath": "pylint",
+  "python.linting.pylintArgs": [
+    "--rcfile=pylintrc"
+  ],
+  "editor.formatOnSave": true,
+  "python.formatting.provider": "yapf",
+  "python.formatting.yapfArgs": [
+    "--style",
+    "${workspaceFolder}/.style.yapf"
+  ],
+  "python.linting.cwd": "${workspaceFolder}",
+  "editor.tokenColorCustomizations": {
+    "[*Dark*]": {
+      "comments": {
+        "fontStyle": "italic"
+      },
+      "textMateRules": [
+        {
+          "scope": "meta.function-call.generic.python",
+          "settings": {
+            "fontStyle": "italic"
+          }
+        },
+        {
+          "scope": "variable.parameter.function-call.python",
+          "settings": {
+            "fontStyle": "italic underline"
+          }
+        }
+      ]
+    }
+  }
+}

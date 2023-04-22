@@ -26,4 +26,3 @@ deepspeed --num_gpus=1 --master_port $MASTER_PORT main.py \
     --learning_rate $LR \
     --fp16 \
     --cache_dir ./cache_dir
-
