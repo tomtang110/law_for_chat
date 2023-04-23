@@ -67,6 +67,7 @@ def main():
       datefmt="%m/%d/%Y %H:%M:%S",
       handlers=[logging.StreamHandler(sys.stdout)],
   )
+  training_args.keep_ckpt_num = data_args.keep_ckpt_num
 
   if training_args.should_log:
     # The default of training_args.log_level is passive, so we set log level at info here to have that default.
