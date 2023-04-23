@@ -250,6 +250,14 @@ class DataTrainingArguments:
           )
       },
   )
+  keep_ckpt_num:Optional[int] = field(
+      default=-1,
+      metadata = {
+                     "help": (
+                         "the number of files to keep ckpt"
+                     )
+                 },
+  )
 
   def __post_init__(self):
     if (

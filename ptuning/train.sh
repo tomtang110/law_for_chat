@@ -18,7 +18,8 @@ CUDA_VISIBLE_DEVICES=0 python3 main.py \
     --predict_with_generate \
     --max_steps 1200 \
     --logging_steps 10 \
-    --save_steps 600 \
+    --save_steps 10 \
     --learning_rate $LR \
     --pre_seq_len $PRE_SEQ_LEN \
-    --cache_dir ./cache_dir
+    --cache_dir ./cache_dir \
+    --keep_ckpt_num 2

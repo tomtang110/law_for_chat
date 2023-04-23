@@ -35,11 +35,10 @@ from transformers import (
     AutoConfig,
     AutoModel,
     AutoTokenizer,
-    AutoTokenizer,
     DataCollatorForSeq2Seq,
     HfArgumentParser,
     Seq2SeqTrainingArguments,
-    set_seed,
+    set_seed
 )
 from trainer_seq2seq import Seq2SeqTrainer
 

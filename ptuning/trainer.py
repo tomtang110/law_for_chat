@@ -2521,6 +2521,8 @@ class Trainer:
         metrics = self.evaluate(ignore_keys=ignore_keys_for_eval)
       self._report_to_hp_search(trial, self.state.global_step, metrics)
 
+
+
     if self.control.should_save:
       self._save_checkpoint(model, trial, metrics=metrics)
       self.control = self.callback_handler.on_save(
@@ -2581,6 +2583,22 @@ class Trainer:
 
     run_dir = self._get_output_dir(trial=trial)
     output_dir = os.path.join(run_dir, checkpoint_folder)
+
+    ckpt_dir_list = os.path.join(run_dir)
+    files = os.listdir(ckpt_dir_list )
+    res_file = []
+    for f in files:
+        if os.path.isdir(f) and f.startswith(PREFIX_CHECKPOINT_DIR + "-"):
+            name, num = f.split('-')
+            num = int(num)
+            res_file.append((name, num))
+    res_file.sort(key=lambda x: x[1])
+    if (len(res_file) > self.args.keep_ckpt_num):
+        name, num = res_file[0]
+        file_name = os.path.join(run_dir,name + '-' + str(num))
+        shutil.rmtree(file_name)
+
+
     self.save_model(output_dir, _internal_call=True)
     if self.deepspeed:
       # under zero3 model file itself doesn't get saved since it's bogus! Unless deepspeed
