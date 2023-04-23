@@ -2587,6 +2587,7 @@ class Trainer:
     ckpt_dir_list = os.path.join(run_dir)
     files = os.listdir(ckpt_dir_list )
     res_file = []
+    print(ckpt_dir_list)
     for f in files:
         if os.path.isdir(f) and f.startswith(PREFIX_CHECKPOINT_DIR + "-"):
             name, num = f.split('-')
