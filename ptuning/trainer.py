@@ -2584,11 +2584,14 @@ class Trainer:
     run_dir = self._get_output_dir(trial=trial)
     output_dir = os.path.join(run_dir, checkpoint_folder)
 
-    ckpt_dir_list = os.path.join(run_dir)
-    files = os.listdir(ckpt_dir_list )
+
+    files = os.listdir(run_dir)
     res_file = []
-    print(ckpt_dir_list)
+
     for f in files:
+        print(f)
+        print(os.path.isdir(f))
+        print(f.startswith(PREFIX_CHECKPOINT_DIR + "-"))
         if os.path.isdir(f) and f.startswith(PREFIX_CHECKPOINT_DIR + "-"):
             name, num = f.split('-')
             num = int(num)
