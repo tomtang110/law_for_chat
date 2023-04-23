@@ -147,10 +147,10 @@ def main():
     model_args = parser.parse_args_into_dataclasses()[0]
 
   tokenizer = AutoTokenizer.from_pretrained(
-      model_args.model_name_or_path, trust_remote_code=True
+      model_args.model_name_or_path, trust_remote_code=True,cache_dir=model_args.cache_dir
   )
   config = AutoConfig.from_pretrained(
-      model_args.model_name_or_path, trust_remote_code=True
+      model_args.model_name_or_path, trust_remote_code=True,cache_dir=model_args.cache_dir
   )
 
   config.pre_seq_len = model_args.pre_seq_len
@@ -159,7 +159,7 @@ def main():
   if model_args.ptuning_checkpoint is not None:
     print(f"Loading prefix_encoder weight from {model_args.ptuning_checkpoint}")
     model = AutoModel.from_pretrained(
-        model_args.model_name_or_path, config=config, trust_remote_code=True
+        model_args.model_name_or_path, config=config, trust_remote_code=True,cache_dir=model_args.cache_dir
     )
     prefix_state_dict = torch.load(
         os.path.join(model_args.ptuning_checkpoint, "pytorch_model.bin")
@@ -171,7 +171,7 @@ def main():
     model.transformer.prefix_encoder.load_state_dict(new_prefix_state_dict)
   else:
     model = AutoModel.from_pretrained(
-        model_args.model_name_or_path, config=config, trust_remote_code=True
+        model_args.model_name_or_path, config=config, trust_remote_code=True,cache_dir=model_args.cache_dir
     )
 
   if model_args.quantization_bit is not None:
