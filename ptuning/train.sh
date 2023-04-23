@@ -3,7 +3,7 @@ LR=2e-2
 STEP=1200
 CUDA_VISIBLE_DEVICES=0 python3 main.py \
     --do_train \
-    --train_file law_data/legal_advic_completed.json \
+    --train_file law_data/legal_advice_completed.json \
     --prompt_column context \
     --response_column target \
     --overwrite_cache \

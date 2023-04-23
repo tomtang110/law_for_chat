@@ -46,7 +46,7 @@ class JsonPreprocessor:
 
 if __name__ == "__main__":
     data_path = '../law_data/legal_advice.json'
-    save_path = '../law_data/legal_advic_completed.json'
+    save_path = '../law_data/legal_advice_completed.json'
     preprocessor = JsonPreprocessor(data_path=data_path,
                                     save_path=save_path)
     preprocessor.process(True)
