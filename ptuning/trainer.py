@@ -2589,10 +2589,8 @@ class Trainer:
     res_file = []
 
     for f in files:
-        print(f)
-        print(os.path.isdir(f))
-        print(f.startswith(PREFIX_CHECKPOINT_DIR + "-"))
-        if os.path.isdir(f) and f.startswith(PREFIX_CHECKPOINT_DIR + "-"):
+        new_file_dir = os.path.join(run_dir,f)
+        if os.path.isdir(new_file_dir) and f.startswith(PREFIX_CHECKPOINT_DIR + "-"):
             name, num = f.split('-')
             num = int(num)
             res_file.append((name, num))
