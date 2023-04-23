@@ -1,6 +1,6 @@
 PRE_SEQ_LEN=128
 LR=2e-2
-
+STEP=1200
 CUDA_VISIBLE_DEVICES=0 python3 main.py \
     --do_train \
     --train_file law_data/legal_advic_completed.json \
@@ -22,4 +22,5 @@ CUDA_VISIBLE_DEVICES=0 python3 main.py \
     --learning_rate $LR \
     --pre_seq_len $PRE_SEQ_LEN \
     --cache_dir ./cache_dir \
-    --keep_ckpt_num 2
+    --keep_ckpt_num 2\
+    --ptuning_checkpoint ./output/$CHECKPOINT/checkpoint-$STEP
