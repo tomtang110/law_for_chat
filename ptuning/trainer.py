@@ -2597,6 +2597,7 @@ class Trainer:
         name, num = res_file[0]
         file_name = os.path.join(run_dir,name + '-' + str(num))
         shutil.rmtree(file_name)
+        print(file_name,' has been deleted.')
 
 
     self.save_model(output_dir, _internal_call=True)
