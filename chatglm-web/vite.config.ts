@@ -17,11 +17,11 @@ export default defineConfig((env) => {
       VitePWA({
         injectRegister: 'auto',
         manifest: {
-          name: 'ChatGLM Web',
-          short_name: 'ChatGLM',
+          name: '法律小徒',
+          short_name: '法小徒',
           icons: [
-            { src: 'pwa-192x192.png', sizes: '192x192', type: 'image/png' },
-            { src: 'pwa-512x512.png', sizes: '512x512', type: 'image/png' },
+            { src: 'law_icon_128_128.png', sizes: '128x128', type: 'image/png' },
+            { src: 'law_icon_512_512.png', sizes: '512x512', type: 'image/png' },
           ],
         },
       }),
