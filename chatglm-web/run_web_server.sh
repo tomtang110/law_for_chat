@@ -1,1 +1,1 @@
-bash run_backend.sh & sleep 60 && run_web_server.sh
+bash run_backend.sh & sleep 60 && bash run_frontend.sh
