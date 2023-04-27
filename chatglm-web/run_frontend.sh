@@ -1,0 +1,2 @@
+pnpm bootstrap
+pnpm dev
