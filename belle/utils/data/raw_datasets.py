@@ -144,7 +144,7 @@ class BelleOpenSoucreDataset(PromptRawDataset):
             self.eval_data = self.dev_raw_datasets["train"]
         else:
             train_val = self.raw_datasets["train"].train_test_split(
-                test_size=1000, shuffle=True, seed=42
+                test_size=10, shuffle=True, seed=42
             )
             self.train_data = train_val["train"]
             self.eval_data = train_val["test"]
