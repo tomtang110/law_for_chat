@@ -28,7 +28,7 @@ def main():
     args = parser.parse_args()
     with open(args.orig_data, encoding='utf-8') as f:
         examples = f.read()
-
+    examples = json.loads(examples)
     num_id = 1
     f_write = open(args.write_data, "w")
     for data in examples:
