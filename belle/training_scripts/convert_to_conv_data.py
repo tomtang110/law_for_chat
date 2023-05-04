@@ -32,7 +32,7 @@ def main():
         num_id = 1
         for line in lines:
             data = json.loads(line)
-            conversations = [{"from": "human", "value": data['instruction']+data['input']},{"from": "assistant", "value": data['output']}]
+            conversations = [{"from": "human", "value": data['instruction']+data['input']},{"from": "assistant", "value": data['target']}]
             # conversations = [{"from": "human", "value": data['input']},{"from": "assistant", "value": data['target']}]
             uniq_id = data['id'] if "id" in data else args.dataset_name+"-"+str(num_id)
             item = {"id":uniq_id, "conversations": conversations}
