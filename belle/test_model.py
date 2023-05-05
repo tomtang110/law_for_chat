@@ -43,9 +43,9 @@ def read_data(filename):
             res.append(json.loads(line.strip()))
     return res
 
-
-input_items = read_data(args.test_file)
-output_items = []
+#
+# input_items = read_data(args.test_file)
+# output_items = []
 
 
 def write_data(filename, examples):
