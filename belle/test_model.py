@@ -102,7 +102,7 @@ def _addrole_masklabel_tokenize(source):
 
 
 if __name__ == '__main__':
-    load_type = torch.float16
+    load_type = torch.float32
     if torch.cuda.is_available():
         device = torch.device(0)
     else:
@@ -121,7 +121,7 @@ if __name__ == '__main__':
         args.finetuned_model_name_or_path,
         torch_dtype=load_type,
         config=model_config,
-        cache_dir = args.cache_dir
+        cache_dir = args.cache_dir,
     )
 
     model.to(device)
@@ -137,7 +137,7 @@ if __name__ == '__main__':
         if query.strip() == "clear":
             history = []
             os.system(clear_command)
-            print("欢迎使用 ChatGLM-6B 模型，输入内容即可进行对话，clear 清空对话历史，stop 终止程序")
+            print("欢迎使用，输入内容即可进行对话，clear 清空对话历史，stop 终止程序")
             conversation_list = []
             continue
 
